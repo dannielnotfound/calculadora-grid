@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Grid - grid-template-columns/rows</title> 
+</head>
+<body>
+    <div class="container">
+        <section class="grid grid-template-areas">
+            <input disabled class="display" id="display">
+
+            <button onclick="insertValue('ac')" class="item clear button-operations">AC</button>
+            <button onclick="invetValue()" class="item plus-minus button-operations">±</button>
+            <button onclick="insertValue('%')" class="item percent button-operations">%</button>
+            <button onclick="insertValue(' / ')" class="item buttonision button-operations-right">÷</button>
+
+            <button onclick="insertValue('7')" class="item seven button-numbers">7</button>
+            <button onclick="insertValue('8')" class="item eight button-numbers">8</button>
+            <button onclick="insertValue('9')" class="item nine button-numbers">9</button>
+            <button onclick="insertValue(' * ')" class="item multiplication button-operations-right">X</button>
+
+            <button onclick="insertValue('4')" class="item four button-numbers">4</button>
+            <button onclick="insertValue('5')" class="item five button-numbers">5</button>
+            <button onclick="insertValue('6')" class="item six button-numbers">6</button>
+            <button onclick="insertValue(' - ')" class="item minus button-operations-right">-</button>
+
+            <button onclick="insertValue('1')" class="item one button-numbers">1</button>
+            <button onclick="insertValue('2')" class="item two button-numbers">2</button>
+            <button onclick="insertValue('3')" class="item three button-numbers">3</button>
+            <button onclick="insertValue(' + ')" class="item plus button-operations-right">+</button>
+
+            <button onclick="insertValue('0')" class="item zero button-numbers">0</button>
+            <button onclick="insertValue('.')" class="item point button-numbers">.</button>
+            <button onclick="calcular()" class="item equal button-operations-right">=</button>
+
+        </section>
+    </div>
+</body>
+<script>
+    function insertValue(num){
+        if(num == 'ac'){ //apagar o display
+            document.getElementById('display').value = ''
+        }else{ //concatenar os numeros 
+            document.getElementById('display').value += num
+        }
+    }
+    function calcular(){
+        const input = document.getElementById('display').value
+        document.getElementById('display').value = eval(input)
+    }
+
+    function invetValue(){
+        calcular()
+        const input = document.getElementById('display').value
+        document.getElementById('display').value = input * -1
+        
+    }
+    
+
+
+
+
+
+    /* Disparador de evento click */
+    var items = document.getElementsByClassName('item')
+    for(i = 0; i < items.length; i++){
+        items[i].addEventListener('click', function(){
+            console.log('click')
+        })
+    }
+
+    /* TO DO LIST
+    
+    Deixar o simbolo de multiplicação por 'X';
+    Adicionar eventos de keyboard (numpad);
+    Prevenção de erros;
+    Adicionar o resto das funcionalidades matemáticas
+
+
+    
+    */
+    
+</script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica Neue", sans-serif;
+    }
+    .container{
+        background: linear-gradient(#686A6C, #F1A23D);
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+    }
+    .grid{
+        display: grid;
+        height: 480px;
+        width: 320px;
+        grid-template-columns: repeat(4, 1fr);
+       grid-template-rows: repeat(6, 1fr);
+    }
+    section{
+        background-color: black;
+    }
+    .item{
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        outline: none;
+        /* border: 0.5 solid black;*/
+        border: none;
+        margin: 0.5px;
+    }
+    .item:hover{
+        opacity: 0.7;
+    }
+    .item:active{
+        background-color: white;
+        opacity: 0.3;
+        color: #4A494F;
+    }
+    .display{
+        background-color: #4A494F;
+        opacity: 0.7;
+        border: none;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        grid-column: 1 / 5;
+        color: white;
+        font-size: 20px;
+        text-align: end;
+        padding: 0.5rem;
+    }
+    .zero{
+        grid-column: 1 / 3;
+    }
+    .button-operations-right{
+        background-color: #F1A23D;
+    }
+    .button-numbers{
+        background-color: #75757D;
+    }
+    .button-operations{
+        background-color: #5a5663;
+    }
+    
+
+</style>
+</html>
