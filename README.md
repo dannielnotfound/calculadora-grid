@@ -1,2 +1,2 @@
-# javascript-examples
- Javascript examples based on my studies. The fisrt example is a simple Calculator usign html, css and js.
+# Calculadora
+Calculadora desenvolvida para fins de estudos e teste dos meus conhecimentos
