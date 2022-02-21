@@ -7,7 +7,12 @@ function insertValue(num){
 }
 function calcular(){
     const input = document.getElementById('display').value
-    document.getElementById('display').value = eval(input)
+    if(input.includes(' X ')){
+        let newInput = input.replace(' X ', '*')
+        document.getElementById('display').value = eval(newInput)
+    }else{
+        document.getElementById('display').value = eval(input)
+    }
 }
 
 function invetValue(){
@@ -16,7 +21,6 @@ function invetValue(){
     document.getElementById('display').value = input * -1
     
 }
-
 
 
 
